@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <be.mygod.preference.PreferenceCategory android:title="@string/proxy_cat">
+        <DropDownPreference android:key="obfs"
+                            android:entries="@array/methods"
+                            android:entryValues="@array/methods"
+                            android:title="@string/method"
+                            android:defaultValue="http"
+                            android:summary="%s"/>
+    </be.mygod.preference.PreferenceCategory>
+    <be.mygod.preference.PreferenceCategory android:title="@string/feature_cat">
+        <be.mygod.preference.EditTextPreference android:key="obfs-host"
+                                                android:title="@string/hostname"
+                                                android:defaultValue="cloudfront.net"
+                                                android:summary="%s"/>
+    </be.mygod.preference.PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,7 @@
+[submodule "src/main/jni/libancillary"]
+	path = src/main/jni/libancillary
+	url = https://github.com/shadowsocks/libancillary.git
+	branch = shadowsocks-android
+[submodule "src/main/jni/simple-obfs"]
+	path = src/main/jni/simple-obfs
+	url = https://github.com/shadowsocks/simple-obfs.git

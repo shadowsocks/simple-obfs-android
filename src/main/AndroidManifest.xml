@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.github.shadowsocks.plugin.obfs_local">
+    <uses-feature android:name="android.hardware.touchscreen"
+                  android:required="false"/>
+    <uses-sdk android:minSdkVersion="19"
+              android:targetSdkVersion="25"/>
+    <application android:allowBackup="false"
+                 android:label="simple-obfs">
+        <provider android:name=".BinaryProvider"
+                  android:authorities="com.github.shadowsocks.plugin.obfs-local">
+            <intent-filter>
+                <category android:name="com.github.shadowsocks.plugin.CATEGORY_NATIVE_PLUGIN"/>
+            </intent-filter>
+            <meta-data android:name="com.github.shadowsocks.plugin.default_config"
+                       android:value="obfs=http"/>
+        </provider>
+        <activity android:name=".ConfigActivity">
+            <intent-filter>
+                <action android:name="com.github.shadowsocks.plugin.obfs-local.CONFIGURE"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
