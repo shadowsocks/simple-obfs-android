@@ -7,6 +7,7 @@
     <application android:allowBackup="false"
                  android:label="simple-obfs">
         <provider android:name=".BinaryProvider"
+                  android:exported="true"
                   android:authorities="com.github.shadowsocks.plugin.obfs_local">
             <intent-filter>
                 <category android:name="com.github.shadowsocks.plugin.CATEGORY_NATIVE_PLUGIN"/>
