@@ -5,13 +5,11 @@
                             android:entries="@array/methods"
                             android:entryValues="@array/methods"
                             android:title="@string/method"
-                            android:defaultValue="http"
                             android:summary="%s"/>
     </be.mygod.preference.PreferenceCategory>
     <be.mygod.preference.PreferenceCategory android:title="@string/feature_cat">
         <be.mygod.preference.EditTextPreference android:key="obfs-host"
                                                 android:title="@string/hostname"
-                                                android:defaultValue="cloudfront.net"
                                                 android:summary="%s"/>
     </be.mygod.preference.PreferenceCategory>
 </PreferenceScreen>

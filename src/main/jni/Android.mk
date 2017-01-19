@@ -252,7 +252,7 @@ LOCAL_CFLAGS    := -Wall -O2 -fno-strict-aliasing -DMODULE_LOCAL \
 					-I$(LOCAL_PATH)/libancillary \
                     -I$(LOCAL_PATH)/libudns \
 					-I$(LOCAL_PATH)/simple-obfs/libcork/include \
-					-I$(LOCAL_PATH)/simple-obfs/libsodium/src/libsodium/include \
+					-I$(LOCAL_PATH)/libsodium/src/libsodium/include \
 					-I$(LOCAL_PATH)/libsodium/src/libsodium/include/sodium \
 					-I$(LOCAL_PATH)/libev \
 					-I$(LOCAL_PATH)/include/simple-obfs

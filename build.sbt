@@ -23,10 +23,4 @@ resConfigs := Seq("zh-rCN")
 
 resolvers += "Local Maven Repository" at "file://" + Path.userHome.absolutePath + "/.m2/repository"
 
-val supportLibsVersion = "25.1.0"
-
-libraryDependencies ++=
-  "com.github.shadowsocks" % "plugin" % "0.0.1-SNAPSHOT" ::
-  "com.android.support" % "design" % supportLibsVersion ::
-  "com.android.support" % "preference-v14" % supportLibsVersion ::
-  Nil
+libraryDependencies += "com.github.shadowsocks" %% "plugin" % "0.0.1-SNAPSHOT"

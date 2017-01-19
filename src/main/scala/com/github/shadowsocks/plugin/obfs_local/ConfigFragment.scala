@@ -15,11 +15,11 @@ class ConfigFragment extends PreferenceFragment {
 
   def onInitializePluginOptions(options: PluginOptions): Unit = {
     this.options = options
-    for (key <- Array("obfs", "obfs-host")) {
+    for ((key, defaultValue) <- Array(("obfs", "http"), ("obfs-host", "cloudfront.net"))) {
       val pref = findPreference(key)
       pref match {
-        case ddp: DropDownPreference => ddp.setValue(options.get(key))
-        case etp: EditTextPreference => etp.setText(options.get(key))
+        case ddp: DropDownPreference => ddp.setValue(options.getOrDefault(key, defaultValue))
+        case etp: EditTextPreference => etp.setText(options.getOrDefault(key, defaultValue))
       }
       pref.setOnPreferenceChangeListener((_, value) => {
         options.put(key, value.toString)

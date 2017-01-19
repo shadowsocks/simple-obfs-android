@@ -18,7 +18,7 @@ class ConfigActivity extends ConfigurationActivity with Toolbar.OnMenuItemClickL
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_config)
     val toolbar = findViewById(R.id.toolbar).asInstanceOf[Toolbar]
-    toolbar.setTitle("obfs-local")
+    toolbar.setTitle(getTitle)
     toolbar.setNavigationIcon(R.drawable.ic_navigation_close)
     toolbar.setNavigationOnClickListener(_ => onBackPressed())
     toolbar.inflateMenu(R.menu.menu_config)
