@@ -22,4 +22,4 @@ typedResources := false
 resConfigs := Seq("zh-rCN")
 
 resolvers += "Local Maven Repository" at "file://" + Path.userHome.absolutePath + "/.m2/repository"
-libraryDependencies += "com.github.shadowsocks" %% "plugin" % "0.0.1-SNAPSHOT"
+libraryDependencies += "com.github.shadowsocks" % "plugin" % "0.0.1-SNAPSHOT"
