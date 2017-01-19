@@ -5,3 +5,12 @@
 [submodule "src/main/jni/simple-obfs"]
 	path = src/main/jni/simple-obfs
 	url = https://github.com/shadowsocks/simple-obfs.git
+[submodule "src/main/jni/libudns"]
+	path = src/main/jni/libudns
+	url = https://github.com/shadowsocks/libudns.git
+[submodule "src/main/jni/libsodium"]
+	path = src/main/jni/libsodium
+	url = https://github.com/shadowsocks/libsodium.git
+[submodule "src/main/jni/libev"]
+	path = src/main/jni/libev
+	url = https://github.com/shadowsocks/libev.git
