@@ -2,6 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <be.mygod.preference.PreferenceCategory android:title="@string/proxy_cat">
         <DropDownPreference android:key="obfs"
+                            android:persistent="false"
                             android:entries="@array/methods"
                             android:entryValues="@array/methods"
                             android:title="@string/simple_obfs_method"
@@ -9,6 +10,7 @@
     </be.mygod.preference.PreferenceCategory>
     <be.mygod.preference.PreferenceCategory android:title="@string/feature_cat">
         <be.mygod.preference.EditTextPreference android:key="obfs-host"
+                                                android:persistent="false"
                                                 android:title="@string/simple_obfs_hostname"
                                                 android:summary="%s"/>
     </be.mygod.preference.PreferenceCategory>
