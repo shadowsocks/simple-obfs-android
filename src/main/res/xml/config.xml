@@ -4,12 +4,12 @@
         <DropDownPreference android:key="obfs"
                             android:entries="@array/methods"
                             android:entryValues="@array/methods"
-                            android:title="@string/method"
+                            android:title="@string/simple_obfs_method"
                             android:summary="%s"/>
     </be.mygod.preference.PreferenceCategory>
     <be.mygod.preference.PreferenceCategory android:title="@string/feature_cat">
         <be.mygod.preference.EditTextPreference android:key="obfs-host"
-                                                android:title="@string/hostname"
+                                                android:title="@string/simple_obfs_hostname"
                                                 android:summary="%s"/>
     </be.mygod.preference.PreferenceCategory>
 </PreferenceScreen>
