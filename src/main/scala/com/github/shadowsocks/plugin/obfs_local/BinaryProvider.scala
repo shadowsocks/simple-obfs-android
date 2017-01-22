@@ -12,10 +12,10 @@ import com.github.shadowsocks.plugin.{NativePluginProvider, PathProvider}
 final class BinaryProvider extends NativePluginProvider {
   override protected def populateFiles(provider: PathProvider): Unit = provider.addPath("obfs-local", "755")
 
+  override def getExecutable: String = getContext.getApplicationInfo.nativeLibraryDir + "/libobfs-local.so"
+
   override def openFile(uri: Uri): ParcelFileDescriptor = uri.getPath match {
-    case "/obfs-local" => ParcelFileDescriptor.open(
-      new File(getContext.getApplicationInfo.nativeLibraryDir + "/libobfs-local.so"),
-      ParcelFileDescriptor.MODE_READ_ONLY)
+    case "/obfs-local" => ParcelFileDescriptor.open(new File(getExecutable), ParcelFileDescriptor.MODE_READ_ONLY)
     case _ => throw new FileNotFoundException()
   }
 }
