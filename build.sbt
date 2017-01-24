@@ -22,6 +22,6 @@ shrinkResources := true
 typedResources := false
 resConfigs := Seq("zh-rCN")
 
-resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+resolvers += "Sonatype OSS Releases" at "https://oss.sonatype.org/content/repositories/releases"
 
-libraryDependencies += "com.github.shadowsocks" %% "plugin" % "0.0.1-SNAPSHOT"
+libraryDependencies += "com.github.shadowsocks" %% "plugin" % "0.0.1"
