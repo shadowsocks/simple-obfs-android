@@ -9,7 +9,7 @@
                  android:label="@string/simple_obfs_name">
         <provider android:name=".BinaryProvider"
                   android:exported="true"
-                  android:authorities="com.github.shadowsocks.plugin.obfs_local">
+                  android:authorities="com.github.shadowsocks.plugin.obfs_local.BinaryProvider">
             <intent-filter>
                 <action android:name="com.github.shadowsocks.plugin.ACTION_NATIVE_PLUGIN"/>
             </intent-filter>
