@@ -2,8 +2,9 @@ package com.github.shadowsocks.plugin.obfs_local
 
 import android.os.Bundle
 import android.support.v7.preference.DropDownPreference
+import android.view.View
 import be.mygod.preference.{EditTextPreference, PreferenceFragment}
-import com.github.shadowsocks.plugin.PluginOptions
+import com.github.shadowsocks.plugin.{PluginContract, PluginOptions}
 
 /**
   * @author Mygod
@@ -32,6 +33,18 @@ class ConfigFragment extends PreferenceFragment {
         options.put(key, value.toString)
         true
       })
+    }
+  }
+
+  override def onSaveInstanceState(outState: Bundle) {
+    super.onSaveInstanceState(outState)
+    outState.putString(PluginContract.EXTRA_OPTIONS, options.toString)
+  }
+  override def onViewCreated(view: View, savedInstanceState: Bundle) {
+    super.onViewCreated(view, savedInstanceState)
+    if (savedInstanceState != null) {
+      options = new PluginOptions(savedInstanceState.getString(PluginContract.EXTRA_OPTIONS))
+      onInitializePluginOptions(options)
     }
   }
 }
