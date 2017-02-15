@@ -5,8 +5,8 @@ android.useSupportVectors
 
 name := "obfs-local"
 organization := "com.github.shadowsocks"
-version := "0.0.4"
-versionCode := Some(4)
+version := "0.0.5"
+versionCode := Some(5)
 
 platformTarget := "android-25"
 
