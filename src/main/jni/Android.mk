@@ -19,147 +19,6 @@ ROOT_PATH := $(LOCAL_PATH)
 BUILD_SHARED_EXECUTABLE := $(LOCAL_PATH)/build-shared-executable.mk
 
 ########################################################
-## libsodium
-########################################################
-
-include $(CLEAR_VARS)
-
-SODIUM_SOURCE := \
-	crypto_aead/chacha20poly1305/sodium/aead_chacha20poly1305.c \
-	crypto_auth/crypto_auth.c \
-	crypto_auth/hmacsha256/auth_hmacsha256_api.c \
-	crypto_auth/hmacsha256/cp/hmac_hmacsha256.c \
-	crypto_auth/hmacsha256/cp/verify_hmacsha256.c \
-	crypto_auth/hmacsha512/auth_hmacsha512_api.c \
-	crypto_auth/hmacsha512/cp/hmac_hmacsha512.c \
-	crypto_auth/hmacsha512/cp/verify_hmacsha512.c \
-	crypto_auth/hmacsha512256/auth_hmacsha512256_api.c \
-	crypto_auth/hmacsha512256/cp/hmac_hmacsha512256.c \
-	crypto_auth/hmacsha512256/cp/verify_hmacsha512256.c \
-	crypto_box/crypto_box.c \
-	crypto_box/crypto_box_easy.c \
-	crypto_box/crypto_box_seal.c \
-	crypto_box/curve25519xsalsa20poly1305/box_curve25519xsalsa20poly1305_api.c \
-	crypto_box/curve25519xsalsa20poly1305/ref/after_curve25519xsalsa20poly1305.c \
-	crypto_box/curve25519xsalsa20poly1305/ref/before_curve25519xsalsa20poly1305.c \
-	crypto_box/curve25519xsalsa20poly1305/ref/box_curve25519xsalsa20poly1305.c \
-	crypto_box/curve25519xsalsa20poly1305/ref/keypair_curve25519xsalsa20poly1305.c \
-	crypto_core/hsalsa20/ref2/core_hsalsa20.c \
-	crypto_core/hsalsa20/core_hsalsa20_api.c \
-	crypto_core/salsa20/ref/core_salsa20.c \
-	crypto_core/salsa20/core_salsa20_api.c \
-	crypto_generichash/crypto_generichash.c \
-	crypto_generichash/blake2/generichash_blake2_api.c \
-	crypto_generichash/blake2/ref/blake2-impl.h \
-	crypto_generichash/blake2/ref/blake2.h \
-	crypto_generichash/blake2/ref/blake2b-compress-ref.c \
-	crypto_generichash/blake2/ref/blake2b-load-sse2.h \
-	crypto_generichash/blake2/ref/blake2b-load-sse41.h \
-	crypto_generichash/blake2/ref/blake2b-ref.c \
-	crypto_generichash/blake2/ref/blake2b-round.h \
-	crypto_generichash/blake2/ref/generichash_blake2b.c \
-	crypto_hash/crypto_hash.c \
-	crypto_hash/sha256/hash_sha256_api.c \
-	crypto_hash/sha256/cp/hash_sha256.c \
-	crypto_hash/sha512/hash_sha512_api.c \
-	crypto_hash/sha512/cp/hash_sha512.c \
-	crypto_onetimeauth/crypto_onetimeauth.c \
-	crypto_onetimeauth/poly1305/onetimeauth_poly1305.c \
-	crypto_onetimeauth/poly1305/onetimeauth_poly1305.h \
-	crypto_onetimeauth/poly1305/donna/poly1305_donna.h \
-	crypto_onetimeauth/poly1305/donna/poly1305_donna32.h \
-	crypto_onetimeauth/poly1305/donna/poly1305_donna64.h \
-	crypto_onetimeauth/poly1305/donna/poly1305_donna.c \
-	crypto_pwhash/scryptsalsa208sha256/crypto_scrypt-common.c \
-	crypto_pwhash/scryptsalsa208sha256/crypto_scrypt.h \
-	crypto_pwhash/scryptsalsa208sha256/scrypt_platform.c \
-	crypto_pwhash/scryptsalsa208sha256/pbkdf2-sha256.c \
-	crypto_pwhash/scryptsalsa208sha256/pbkdf2-sha256.h \
-	crypto_pwhash/scryptsalsa208sha256/pwhash_scryptsalsa208sha256.c \
-	crypto_pwhash/scryptsalsa208sha256/sysendian.h \
-	crypto_pwhash/scryptsalsa208sha256/nosse/pwhash_scryptsalsa208sha256_nosse.c \
-	crypto_scalarmult/crypto_scalarmult.c \
-	crypto_scalarmult/curve25519/scalarmult_curve25519.c \
-	crypto_scalarmult/curve25519/scalarmult_curve25519.h \
-	crypto_secretbox/crypto_secretbox.c \
-	crypto_secretbox/crypto_secretbox_easy.c \
-	crypto_secretbox/xsalsa20poly1305/secretbox_xsalsa20poly1305_api.c \
-	crypto_shorthash/crypto_shorthash.c \
-	crypto_shorthash/siphash24/shorthash_siphash24_api.c \
-	crypto_shorthash/siphash24/ref/shorthash_siphash24.c \
-	crypto_sign/crypto_sign.c \
-	crypto_sign/ed25519/ref10/base.h \
-	crypto_sign/ed25519/ref10/base2.h \
-	crypto_sign/ed25519/sign_ed25519_api.c \
-	crypto_sign/ed25519/ref10/keypair.c \
-	crypto_sign/ed25519/ref10/open.c \
-	crypto_sign/ed25519/ref10/obsolete.c \
-	crypto_sign/ed25519/ref10/sign.c \
-	crypto_stream/crypto_stream.c \
-	crypto_stream/chacha20/stream_chacha20.c \
-	crypto_stream/chacha20/stream_chacha20.h \
-	crypto_stream/chacha20/ref/stream_chacha20_ref.h \
-	crypto_stream/chacha20/ref/stream_chacha20_ref.c \
-	crypto_stream/salsa20/stream_salsa20_api.c \
-	crypto_stream/xsalsa20/stream_xsalsa20_api.c \
-	crypto_stream/xsalsa20/ref/stream_xsalsa20.c \
-	crypto_stream/xsalsa20/ref/xor_xsalsa20.c \
-	crypto_verify/16/verify_16_api.c \
-	crypto_verify/16/ref/verify_16.c \
-	crypto_verify/32/verify_32_api.c \
-	crypto_verify/32/ref/verify_32.c \
-	crypto_verify/64/verify_64_api.c \
-	crypto_verify/64/ref/verify_64.c \
-	randombytes/randombytes.c \
-	sodium/core.c \
-	sodium/runtime.c \
-	sodium/utils.c \
-	sodium/version.c
-
-SODIUM_SOURCE += \
-	crypto_scalarmult/curve25519/ref10/x25519_ref10.c
-
-SODIUM_SOURCE += \
-	crypto_pwhash/argon2/argon2-core.c \
-	crypto_pwhash/argon2/argon2.c \
-	crypto_pwhash/argon2/argon2-encoding.c \
-	crypto_pwhash/argon2/blake2b-long.c \
-	crypto_pwhash/argon2/argon2-fill-block-ref.c \
-	crypto_pwhash/argon2/pwhash_argon2i.c \
-	crypto_pwhash/argon2/argon2-fill-block-ssse3.c
-
-SODIUM_SOURCE += \
-	crypto_stream/salsa20/ref/stream_salsa20_ref.c \
-	crypto_stream/salsa20/ref/xor_salsa20_ref.c
-
-SODIUM_SOURCE += \
-	randombytes/sysrandom/randombytes_sysrandom.c
-
-LOCAL_MODULE := sodium
-LOCAL_CFLAGS += -O2 -I$(LOCAL_PATH)/libsodium/src/libsodium/include \
-				-I$(LOCAL_PATH)/include \
-				-I$(LOCAL_PATH)/include/sodium \
-				-I$(LOCAL_PATH)/libsodium/src/libsodium/include/sodium \
-				-DPACKAGE_NAME=\"libsodium\" -DPACKAGE_TARNAME=\"libsodium\" \
-				-DPACKAGE_VERSION=\"1.0.7\" -DPACKAGE_STRING=\"libsodium\ 1.0.7\" \
-				-DPACKAGE_BUGREPORT=\"https://github.com/jedisct1/libsodium/issues\" \
-				-DPACKAGE_URL=\"https://github.com/jedisct1/libsodium\" \
-				-DPACKAGE=\"libsodium\" -DVERSION=\"1.0.7\" -DSTDC_HEADERS=1 \
-				-DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 \
-				-DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 \
-				-DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 \
-				-D__EXTENSIONS__=1 -D_ALL_SOURCE=1 -D_GNU_SOURCE=1 \
-				-D_POSIX_PTHREAD_SEMANTICS=1 -D_TANDEM_SOURCE=1 \
-				-DHAVE_DLFCN_H=1 -DLT_OBJDIR=\".libs/\" \
-				-DHAVE_SYS_MMAN_H=1 -DNATIVE_LITTLE_ENDIAN=1 \
-				-DHAVE_WEAK_SYMBOLS=1 -DHAVE_ARC4RANDOM=1 -DHAVE_ARC4RANDOM_BUF=1 \
-				-DHAVE_MLOCK=1 -DHAVE_MPROTECT=1 -DHAVE_POSIX_MEMALIGN=1
-
-LOCAL_SRC_FILES := $(addprefix libsodium/src/libsodium/,$(SODIUM_SOURCE))
-
-include $(BUILD_STATIC_LIBRARY)
-
-########################################################
 ## libcork
 ########################################################
 
@@ -187,25 +46,6 @@ LOCAL_SRC_FILES := $(addprefix simple-obfs/libcork/src/libcork/,$(CORK_SOURCE))
 include $(BUILD_STATIC_LIBRARY)
 
 ########################################################
-## libudns
-########################################################
-
-include $(CLEAR_VARS)
-
-UDNS_SOURCES := udns_dn.c udns_dntosp.c udns_parse.c udns_resolver.c udns_init.c \
-	udns_misc.c udns_XtoX.c \
-	udns_rr_a.c udns_rr_ptr.c udns_rr_mx.c udns_rr_txt.c udns_bl.c \
-	udns_rr_srv.c udns_rr_naptr.c udns_codes.c udns_jran.c
-
-LOCAL_MODULE := libudns
-LOCAL_CFLAGS += -O2 -I$(LOCAL_PATH)/libudns \
-				-DHAVE_DECL_INET_NTOP
-
-LOCAL_SRC_FILES := $(addprefix libudns/,$(UDNS_SOURCES))
-
-include $(BUILD_STATIC_LIBRARY)
-
-########################################################
 ## libev
 ########################################################
 
@@ -216,7 +56,7 @@ LOCAL_CFLAGS += -O2 -DNDEBUG -DHAVE_CONFIG_H \
 				-I$(LOCAL_PATH)/include/libev
 LOCAL_SRC_FILES := \
 	libev/ev.c \
-	libev/event.c 
+	libev/event.c
 
 include $(BUILD_STATIC_LIBRARY)
 
@@ -250,17 +90,12 @@ LOCAL_CFLAGS    := -Wall -O2 -fno-strict-aliasing -DMODULE_LOCAL \
                     -DCONNECT_IN_PROGRESS=EINPROGRESS \
                     -I$(LOCAL_PATH)/include \
 					-I$(LOCAL_PATH)/libancillary \
-                    -I$(LOCAL_PATH)/libudns \
 					-I$(LOCAL_PATH)/simple-obfs/libcork/include \
-					-I$(LOCAL_PATH)/libsodium/src/libsodium/include \
-					-I$(LOCAL_PATH)/libsodium/src/libsodium/include/sodium \
 					-I$(LOCAL_PATH)/libev \
 					-I$(LOCAL_PATH)/include/simple-obfs
 
-LOCAL_STATIC_LIBRARIES := libev libsodium libcork libudns libancillary
+LOCAL_STATIC_LIBRARIES := libev libcork libancillary
 
 LOCAL_LDLIBS := -llog
 
 include $(BUILD_SHARED_EXECUTABLE)
-
-
