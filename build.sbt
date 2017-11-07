@@ -1,4 +1,4 @@
-scalaVersion := "2.11.8"
+scalaVersion := "2.11.11"
 
 enablePlugins(AndroidApp)
 android.useSupportVectors
