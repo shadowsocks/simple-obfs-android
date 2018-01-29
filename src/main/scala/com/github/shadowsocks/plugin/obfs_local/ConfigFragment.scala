@@ -16,7 +16,7 @@ class ConfigFragment extends PreferenceFragment {
 
   def onInitializePluginOptions(options: PluginOptions): Unit = {
     this.options = options
-    for ((key, defaultValue) <- Array(("obfs", "http"), ("obfs-host", "cloudfront.net"))) {
+    for ((key, defaultValue) <- Array(("obfs", "http"), ("obfs-host", "cloudfront.net"), ("obfs-uri", "/"))) {
       val pref = findPreference(key)
       pref match {
         case ddp: DropDownPreference => ddp.setValue(options.getOrDefault(key, defaultValue))
