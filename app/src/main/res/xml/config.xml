@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/proxy_cat">
+        <DropDownPreference android:key="obfs"
+                            android:persistent="false"
+                            android:entries="@array/methods"
+                            android:entryValues="@array/methods"
+                            android:title="@string/simple_obfs_method"
+                            android:summary="%s"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/feature_cat">
+        <EditTextPreference android:key="obfs-host"
+                            android:persistent="false"
+                            android:title="@string/simple_obfs_hostname"
+                            android:summary="%s"/>
+        <EditTextPreference android:key="obfs-uri"
+                            android:persistent="false"
+                            android:title="@string/simple_obfs_uri"
+                            android:summary="%s"/>
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="simple_obfs_name">Simple obfuscation</string>
+    <string name="simple_obfs_method">Obfuscation wrapper</string>
+    <string name="simple_obfs_hostname">Obfuscation hostname</string>
+    <string name="simple_obfs_uri">Obfuscation uri</string>
+    <string name="unsaved_changes_prompt">You have unsaved changes. Do you want to save them?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="apply">Apply</string>
+    <string name="proxy_cat">Proxy Settings</string>
+    <string name="feature_cat">Advanced Features</string>
+</resources>
