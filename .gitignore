@@ -90,3 +90,12 @@ proguard-sbt.txt
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
+
+# Gradle wrapper JAR (optional - uncomment if you don't want to commit it)
+# gradle/wrapper/gradle-wrapper.jar
+
+# CMake build outputs
+.cxx/
+
+# Kotlin compiled files
+*.kotlin_module
