@@ -98,7 +98,7 @@ set(OBFS_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/../jni/simple-obfs/src/android.c
 )
 
-add_library(obfs-local SHARED ${OBFS_SOURCES})
+add_executable(obfs-local ${OBFS_SOURCES})
 
 target_compile_definitions(obfs-local PRIVATE
     MODULE_LOCAL
@@ -116,5 +116,7 @@ target_link_libraries(obfs-local
 
 # Set the linker flags to make it executable
 set_target_properties(obfs-local PROPERTIES
-    LINK_FLAGS "-pie -fPIE"
+    OUTPUT_NAME obfs-local
+    PREFIX "lib"
+    SUFFIX ".so"
 )
